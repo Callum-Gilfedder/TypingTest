@@ -2,6 +2,7 @@
   --keyboard-width: 36vw;
   --keyboard-height: 22vh;
   --background-color: beige;
+  --activation-color: white;
 }
 
 body {
@@ -21,6 +22,18 @@ body {
   grid-row-gap: 0px;
 }
 
+@keyframes key-activated {
+  0% {
+    border: rgb(161, 161, 145);
+  }
+  50% { 
+    border: white;
+  }
+  100% {
+    border: rgb(161, 161, 145);
+  }
+}
+
 .key { 
   height: 95%;
   width: 3vw; 
@@ -32,8 +45,37 @@ body {
   display: flex;
   align-items: center; /* Vertical alignment */
   justify-content: center;
-
 }
+
+.key-pressed {
+  animation: key-animation 0.5s infinite;
+}
+
+.key:hover {
+  border: solid rgb(16, 192, 192) 2px;
+  color: rgb(16, 192, 192);
+  background-color: rgb(252, 252, 252);
+  transition: all 0.5s;
+}
+
+@keyframes key-animation {
+  0% {
+    background-color: rgb(209, 209, 189);
+    border: solid 2px rgb(161, 161, 145);
+    color: rgb(109, 109, 98);
+  }
+  50% {
+    border: solid rgb(16, 192, 192) 2px;
+    color: rgb(16, 192, 192);
+    background-color: rgb(252, 252, 252);
+  }
+  100% {
+    background-color: rgb(209, 209, 189);
+    border: solid 2px rgb(161, 161, 145);
+    color: rgb(109, 109, 98);
+  }
+}
+
 
 .col-span-2-rhs {
   grid-column: 11 / span 2;

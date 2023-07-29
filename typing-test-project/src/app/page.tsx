@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
 export default function Home() {
+  
   return (
     <main className='body'>
       <div className="keyboard-container">
-
         <div className="key">Q</div>
         <div className="key">W</div>
         <div className="key">E</div>
