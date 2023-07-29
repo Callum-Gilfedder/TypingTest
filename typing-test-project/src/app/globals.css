@@ -1,28 +1,65 @@
+:root { 
+  --keyboard-width: 36vw;
+  --keyboard-height: 22vh;
+  --background-color: beige;
+}
+
 body {
-  background-color: beige;
+  background-color: var(--background-color);
 }
 
 .keyboard-container {
-  background-color: black;
-  width: 50vw;
-  height: 40vh;
-  margin-top: 20vh;  
+  width: var(--keyboard-width);
+  height: var(--keyboard-height);
+  margin-top: 35vh;
+  margin-left: 24vw;  
   display: grid;
-  grid-template-rows: repeat(4, 1fr); /* Four rows with equal fractions of available space */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
-.row { 
-  background-color: white;
-  border: red solid 2px;
+.key { 
+  height: 95%;
+  width: 3vw; 
+  /* 1/12 keyboard-width */
+  background-color: rgb(209, 209, 189);
+  border: solid 2px rgb(161, 161, 145);
+  color: rgb(109, 109, 98);
+  border-radius: 5px;
+  display: flex;
+  align-items: center; /* Vertical alignment */
+  justify-content: center;
+
+}
+
+.col-span-2-rhs {
+  grid-column: 11 / span 2;
+  width: 6.2vw;
+}
+
+.empty { 
+  background-color: transparent;
+  border: none;
+}
+
+.col-span-2-lhs {
+  grid-column: 2 / span 2;
+  width: 6.2vw;
+}
+
+.space {
+  grid-column: 5 / span 4;
+  width: 12.9vw;
 }
 
 
-.column {
-  flex: 1;
-  height: 100%;
-  width: 5vw;
-  border: 1px solid #000; /* Optional: Just to visualize the columns */
+.second-row-offset {
+  margin-left: 0vw;
 }
+
 
 .large {
   flex: 2; /* Twice as big column */
