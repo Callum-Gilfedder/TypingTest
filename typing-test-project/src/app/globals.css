@@ -48,7 +48,7 @@ body {
 }
 
 .key-pressed {
-  animation: key-animation 0.5s infinite;
+  animation: key-animation 0.1s;
 }
 
 .key:hover {
