@@ -93,8 +93,8 @@ body {
 }
 
 .space {
-  grid-column: 5 / span 4;
-  width: 12.9vw;
+  grid-column: 4 / span 5;
+  width: 15.85vw;
 }
 
 
