@@ -27,7 +27,7 @@ export default function Home() {
     <main className='body'>
         <div className="main-container">
           <div className="row row-1">
-            Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello 
+            now why be began how much give run end as book two 
           </div>
           <div className="row row-2">
             <input type="text" />

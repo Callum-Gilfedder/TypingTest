@@ -4,9 +4,11 @@
   --keyboard-width: 36vw;
   --keyboard-height: 22vh;
   --background-color: beige;
+  --secondary-color: rgb(209, 209, 189);
   --activation-color: white;
   --border-color: rgb(161, 161, 145);
   --large-font: 3.3rem;
+  --text-color: rgb(70, 70, 61);;
 }
 
 
@@ -15,6 +17,8 @@ body {
   background-color: var(--background-color);
   margin: 0px;
   padding: 0px;
+  color: var(--text-color);
+  font-family: 'Quicksand', sans-serif;
 }
 
 .keyboard-container {
@@ -33,7 +37,7 @@ body {
 .main-container { 
   margin-top: 25vh;
   margin-left: 10vw;
-  width: 80vw;
+  width: 78vw;
   height: 20vh;
   background-color: beige;
   display: flex;
@@ -49,24 +53,33 @@ body {
   width: 100%;
   height: 50%; /* Each row takes 50% of the container height */
   border: solid 2px var(--border-color);
-  border-radius: 20px;
+  border-radius: 5px;
   display: flex;
   align-items: center; /* Vertical alignment */
   justify-content: center;
+  background-color: var(--secondary-color);
 }
 
 /* .row-1 */
 
 .row-2 {
   border: none;
+  width: 100%;
+  margin-top: 2px;
+  height: 95%;
+  background-color: white;
 }
 
 input {
   background-color: var(--background-color);
-  width: 100%;
-  height: 100%;
+  width: 25%;
+  height: 80%;
   border: beige;
   font-size: var(--large-font);
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  align-items: center; /* Vertical alignment */
+  justify-content: center;
 
 }
 
@@ -74,7 +87,7 @@ input {
   height: 95%;
   width: 3vw; 
   /* 1/12 keyboard-width */
-  background-color: rgb(209, 209, 189);
+  background-color:var(--secondary-color) ;
   border: solid 2px rgb(161, 161, 145);
   color: rgb(109, 109, 98);
   border-radius: 5px;
