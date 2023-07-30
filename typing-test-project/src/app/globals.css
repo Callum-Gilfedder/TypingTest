@@ -1,19 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
 :root { 
   --keyboard-width: 36vw;
   --keyboard-height: 22vh;
   --background-color: beige;
   --activation-color: white;
+  --border-color: rgb(161, 161, 145);
+  --large-font: 3.3rem;
 }
+
+
 
 body {
   background-color: var(--background-color);
+  margin: 0px;
+  padding: 0px;
 }
 
 .keyboard-container {
   width: var(--keyboard-width);
   height: var(--keyboard-height);
-  margin-top: 35vh;
-  margin-left: 24vw;  
+  margin-top: 10vh;
+  margin-left: 27vw;  
   display: grid;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -22,16 +30,44 @@ body {
   grid-row-gap: 0px;
 }
 
-@keyframes key-activated {
-  0% {
-    border: rgb(161, 161, 145);
-  }
-  50% { 
-    border: white;
-  }
-  100% {
-    border: rgb(161, 161, 145);
-  }
+.main-container { 
+  margin-top: 25vh;
+  margin-left: 10vw;
+  width: 80vw;
+  height: 20vh;
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--large-font);
+  font-family: 'Quicksand', sans-serif;
+
+
+}
+
+.row { 
+  flex: 1;
+  width: 100%;
+  height: 50%; /* Each row takes 50% of the container height */
+  border: solid 2px var(--border-color);
+  border-radius: 20px;
+  display: flex;
+  align-items: center; /* Vertical alignment */
+  justify-content: center;
+}
+
+/* .row-1 */
+
+.row-2 {
+  border: none;
+}
+
+input {
+  background-color: var(--background-color);
+  width: 100%;
+  height: 100%;
+  border: beige;
+  font-size: var(--large-font);
+
 }
 
 .key { 
@@ -48,7 +84,7 @@ body {
 }
 
 .key-pressed {
-  animation: key-animation 0.1s;
+  animation: key-animation 1s;
 }
 
 .key:hover {
@@ -56,6 +92,8 @@ body {
   color: rgb(16, 192, 192);
   background-color: rgb(252, 252, 252);
   transition: all 0.5s;
+  box-shadow: inset 0 0 2px 2px rgba(0, 0, 0, 0.3);
+
 }
 
 @keyframes key-animation {
@@ -64,15 +102,18 @@ body {
     border: solid 2px rgb(161, 161, 145);
     color: rgb(109, 109, 98);
   }
-  50% {
+  10% {
     border: solid rgb(16, 192, 192) 2px;
     color: rgb(16, 192, 192);
     background-color: rgb(252, 252, 252);
+    box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.3);
+
   }
   100% {
     background-color: rgb(209, 209, 189);
     border: solid 2px rgb(161, 161, 145);
     color: rgb(109, 109, 98);
+
   }
 }
 

@@ -25,6 +25,15 @@ export default function Home() {
 
   return (
     <main className='body'>
+        <div className="main-container">
+          <div className="row row-1">
+            Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello 
+          </div>
+          <div className="row row-2">
+            <input type="text" />
+          </div>
+        </div>
+
       <div className="keyboard-container">
         {pressedKey.toLowerCase() == "q"  ? <div className="key key-pressed">Q</div> : <div className="key">Q</div>}
         {pressedKey.toLowerCase() == "w"  ? <div className="key key-pressed">W</div> : <div className="key">W</div>}
@@ -49,7 +58,6 @@ export default function Home() {
         {pressedKey.toLowerCase() == "l"  ? <div className="key key-pressed">L</div> : <div className="key">L</div>}
         {pressedKey == "Enter" ? <div className="key col-span-2-rhs key-pressed">ENTER</div> : <div className="key col-span-2-rhs">ENTER</div>}
         {pressedKey == "Shift" ? <div className="key col-span-2-lhs key-pressed">SHIFT</div> : <div className="key col-span-2-lhs">SHIFT</div>}
-
         {pressedKey.toLowerCase() == "z"  ? <div className="key key-pressed">Z</div> : <div className="key">Z</div>}
         {pressedKey.toLowerCase() == "x"  ? <div className="key key-pressed">X</div> : <div className="key">X</div>}
         {pressedKey.toLowerCase() == "c"  ? <div className="key key-pressed">C</div> : <div className="key">C</div>}
@@ -57,13 +65,11 @@ export default function Home() {
         {pressedKey.toLowerCase() == "b"  ? <div className="key key-pressed">B</div> : <div className="key">B</div>}
         {pressedKey.toLowerCase() == "n"  ? <div className="key key-pressed">N</div> : <div className="key">N</div>}
         {pressedKey.toLowerCase() == "m"  ? <div className="key key-pressed">M</div> : <div className="key">M</div>}
-
         <div className="key empty col-span-2-rhs"></div>
         {pressedKey == "Control" ? <div className="key col-span-2-lhs key-pressed">CTRL</div> : <div className="key col-span-2-lhs">CTRL</div>}
         {pressedKey == " " ? <div className="key space key-pressed"></div> : <div className="key space"></div>}
         {pressedKey == "Alt" ? <div className="key key-pressed">ALT</div> : <div className="key">ALT</div>}
         {pressedKey == "Meta" ? <div className="key key-pressed">WIN</div> : <div className="key">WIN</div>}
-
         <div className="key empty"></div>
       </div>
     </main>
