@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Quicksand:wght@500&display=swap');
 
 :root { 
   --keyboard-width: 36vw;
@@ -26,7 +27,6 @@ body {
   height: var(--keyboard-height);
   margin-top: 10vh;
   margin-left: 27vw;  
-  display: grid;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -67,17 +67,51 @@ body {
   width: 100%;
   margin-top: 2px;
   height: 95%;
-  background-color: white;
+  background-color: var(--background-color);
+}
+
+.start-button {
+  width: 4vw;
+  margin-top: 5px;
+  margin-left: 0px;
+  height: 86%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  align-items: center; /* Vertical alignment */
+  justify-content: center;
+  text-align: center;
+}
+
+.start-button:hover {
+  color: var(--secondary-color);
+}
+
+.timer {
+  width: 3vw;
+  margin-top: 25px;
+  margin-right: 1.8vw;
+  height: 86%;
+  background-color: var(--background-color);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color);
+  align-items: center; /* Vertical alignment */
+  justify-content: center;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+
 }
 
 input {
-  background-color: var(--background-color);
+  background-color: var(--secondary-color);
   width: 25%;
+  margin-left: 15px;
   height: 80%;
-  border: beige;
+  border: solid 2px var(--border-color) ;
   font-size: var(--large-font);
   font-family: 'Quicksand', sans-serif;
   display: flex;
+  text-align: center;
   align-items: center; /* Vertical alignment */
   justify-content: center;
 

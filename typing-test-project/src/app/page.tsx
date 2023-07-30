@@ -6,11 +6,15 @@ import { useEffect } from 'react';
 
 export default function Home() {
   const [pressedKey, setPressedKey] = useState('');
-
+  const [activationState, setActivationState] = useState(false)
   // Function to handle key press event
   function handleKeyPress(event: any) {
     setPressedKey(event.key);
     console.log(event.key)
+  }
+
+  function toggleStartPause(event: any) {
+    setActivationState(!activationState)
   }
 
   // Add event listener to the document when the component mounts
@@ -30,7 +34,10 @@ export default function Home() {
             now why be began how much give run end as book two 
           </div>
           <div className="row row-2">
+            <div className="timer">1:00</div>
             <input type="text" />
+            { activationState ? <div className="start-button" onClick={toggleStartPause}> &#8634;</div> : <div className="start-button" onClick={toggleStartPause}>&#9658;</div> } 
+
           </div>
         </div>
 
