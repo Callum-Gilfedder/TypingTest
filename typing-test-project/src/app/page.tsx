@@ -1,5 +1,7 @@
 import Image from 'next/image'
 'use client' 
+import { commonWordsString } from './input';
+
 // I don't understand use client but it needs to be here for things to work?
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -8,6 +10,12 @@ export default function Home() {
   const [pressedKey, setPressedKey] = useState('');
   const [activationState, setActivationState] = useState(false)
   const [input, setInput] = useState("")
+  const [data, setData] = useState(commonWordsString)
+  // console.log(data)
+  // function parseData(event: any) {  
+    
+  // }
+
   // Function to handle key press event
   function handleKeyPress(event: any) {
     setPressedKey(event.key);
@@ -20,6 +28,10 @@ export default function Home() {
 
   function handleChange(event: any) {
     setInput(event.target.value)
+  }
+
+  async function getData(dataPath: string) {
+    
   }
 
   // Add event listener to the document when the component mounts
