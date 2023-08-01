@@ -30,12 +30,34 @@ export default function Home() {
   return (
     <main className='body'>
       <div className="navigation-bar">
+        <div className="left-elements">
         <ul>
           <li>HOME</li>
-          <li> <a href="">SIGN-IN</a>  <a href="">LOG-IN</a></li>
         </ul>
-      </div>
+        </div>
+        <div className="right-elements">
+        <ul>
+            <li>SIGN-IN </li>
+            <li>LOG-IN</li>
+        </ul>
+        </div>
+      </div>  
+
         <div className="main-container">
+
+        <div className="mini-navigation-bar">
+          <div className="left-elements">
+            <ul>
+              <li className='mini-nav-text'>TIME: 10s 30s 60s</li>
+            </ul>
+          </div>
+          <div className="right-elements">
+            <ul>
+              <li className='mini-nav-text'>WORDS: 10 50 100</li>
+            </ul>
+          </div>
+        </div>
+
           <div className="row row-1">
             now why be began how much give run end as book two as book two three
           </div>
@@ -46,7 +68,6 @@ export default function Home() {
 
           </div>
         </div>
-
       <div className="keyboard-container">
         {pressedKey.toLowerCase() == "q"  ? <div className="key key-pressed">Q</div> : <div className="key">Q</div>}
         {pressedKey.toLowerCase() == "w"  ? <div className="key key-pressed">W</div> : <div className="key">W</div>}
