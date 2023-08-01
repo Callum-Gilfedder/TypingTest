@@ -31,7 +31,7 @@ export default function Home() {
     <main className='body'>
         <div className="main-container">
           <div className="row row-1">
-            now why be began how much give run end as book two 
+            now why be began how much give run end as book two as book two three
           </div>
           <div className="row row-2">
             <div className="timer">1:00</div>

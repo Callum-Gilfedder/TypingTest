@@ -4,12 +4,13 @@
 :root { 
   --keyboard-width: 36vw;
   --keyboard-height: 22vh;
-  --background-color: beige;
-  --secondary-color: rgb(209, 209, 189);
-  --activation-color: white;
-  --border-color: rgb(161, 161, 145);
-  --large-font: 3.3rem;
-  --text-color: rgb(70, 70, 61);;
+  --background-color: rgb(42, 36, 56);
+  --secondary-color: rgb(56, 51, 68);
+  --activation-color: rgba(255, 255, 255, 0.452);
+  --border-color: rgb(53, 47, 68);
+  --large-font: 2.5rem;
+  --text-color: rgba(219, 216, 227, 0.541);
+  --key-text-color: rgba(219, 216, 227, 0.541);
 }
 
 
@@ -25,8 +26,8 @@ body {
 .keyboard-container {
   width: var(--keyboard-width);
   height: var(--keyboard-height);
-  margin-top: 10vh;
-  margin-left: 27vw;  
+  margin-top: 0.5vh;
+  margin-left: 30.8vw;  
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -35,11 +36,11 @@ body {
 }
 
 .main-container { 
-  margin-top: 25vh;
+  margin-top: 40vh;
   margin-left: 10vw;
   width: 78vw;
   height: 20vh;
-  background-color: beige;
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   font-size: var(--large-font);
@@ -72,7 +73,7 @@ body {
 
 .start-button {
   width: 4vw;
-  margin-top: 5px;
+  margin-top: 25px;
   margin-left: 0px;
   height: 86%;
   background-color: var(--background-color);
@@ -114,6 +115,7 @@ input {
   text-align: center;
   align-items: center; /* Vertical alignment */
   justify-content: center;
+  color: var(--text-color)
 
 }
 
@@ -122,8 +124,8 @@ input {
   width: 3vw; 
   /* 1/12 keyboard-width */
   background-color:var(--secondary-color) ;
-  border: solid 2px rgb(161, 161, 145);
-  color: rgb(109, 109, 98);
+  border: solid 2px var(--border-color); 
+  color: var(--key-text-color);
   border-radius: 5px;
   display: flex;
   align-items: center; /* Vertical alignment */
@@ -145,21 +147,20 @@ input {
 
 @keyframes key-animation {
   0% {
-    background-color: rgb(209, 209, 189);
-    border: solid 2px rgb(161, 161, 145);
-    color: rgb(109, 109, 98);
+
+    color: var(--key-text-color);
   }
   10% {
-    border: solid rgb(16, 192, 192) 2px;
-    color: rgb(16, 192, 192);
-    background-color: rgb(252, 252, 252);
-    box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.3);
+    /* border: solid rgb(16, 192, 192) 2px; */
+    /* color: rgb(16, 192, 192); */
+    background-color: var(--activation-color);
+    color: black;
+    /* box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.3); */
 
   }
   100% {
-    background-color: rgb(209, 209, 189);
-    border: solid 2px rgb(161, 161, 145);
-    color: rgb(109, 109, 98);
+    /* background-color: rgb(209, 209, 189); */
+    color: var(--text-color);
 
   }
 }
