@@ -195,3 +195,35 @@ input {
 .large {
   flex: 2; /* Twice as big column */
 }
+
+.navigation-bar {
+  width: 100%;
+  background-color: var(--secondary-color);
+  margin: 0;
+  padding: 0;
+  height: 5vh;
+  display: flex; /* Use flexbox to create a horizontal layout */
+  justify-content: space-around; /* Distribute items evenly along the main axis */
+  align-items: center; /* Center items vertically */
+}
+
+ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex; /* Use flexbox to create a horizontal layout */
+}
+
+li {
+  margin: 0;
+  flex: 1; /* Let each li take an equal portion of the available width */
+  text-align: center;
+}
+
+/* Add styles for links inside li elements if needed */
+li a {
+  text-decoration: none;
+  color: var(--text-color);
+  margin-right: 10px;
+}

@@ -29,6 +29,12 @@ export default function Home() {
 
   return (
     <main className='body'>
+      <div className="navigation-bar">
+        <ul>
+          <li>HOME</li>
+          <li> <a href="">SIGN-IN</a>  <a href="">LOG-IN</a></li>
+        </ul>
+      </div>
         <div className="main-container">
           <div className="row row-1">
             now why be began how much give run end as book two as book two three
