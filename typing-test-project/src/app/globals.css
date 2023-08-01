@@ -75,6 +75,10 @@ body {
   background-color: var(--secondary-color);
 }
 
+.active-word {
+  background-color: white;
+  width: 1rem;
+}
 /* .row-1 */
 
 .row-2 {
