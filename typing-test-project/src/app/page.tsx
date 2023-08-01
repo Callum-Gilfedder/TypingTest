@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 export default function Home() {
   const [pressedKey, setPressedKey] = useState('');
   const [activationState, setActivationState] = useState(false)
+  const [input, setInput] = useState("")
   // Function to handle key press event
   function handleKeyPress(event: any) {
     setPressedKey(event.key);
@@ -15,6 +16,10 @@ export default function Home() {
 
   function toggleStartPause(event: any) {
     setActivationState(!activationState)
+  }
+
+  function handleChange(event: any) {
+    setInput(event.target.value)
   }
 
   // Add event listener to the document when the component mounts
@@ -48,7 +53,7 @@ export default function Home() {
         <div className="mini-navigation-bar">
           <div className="left-elements">
             <ul>
-              <li className='mini-nav-text'>TIME: 10s 30s 60s</li>
+              <li className='mini-nav-text'>TIME: 10s 30s 60s </li>
             </ul>
           </div>
           <div className="right-elements">
@@ -59,13 +64,17 @@ export default function Home() {
         </div>
 
           <div className="row row-1">
-            now why be began how much give run end as book two as book two three
+            
+           <span className='activated'>a</span><span className="incorrect">n</span> ow why be began how much give run end as book two as book two three
           </div>
           <div className="row row-2">
             <div className="timer">1:00</div>
-            <input type="text" />
-            { activationState ? <div className="start-button" onClick={toggleStartPause}> &#8634;</div> : <div className="start-button" onClick={toggleStartPause}>&#9658;</div> } 
-
+            <input type="text" 
+                   id="message"
+                   name="message"
+                   onChange={handleChange}
+            />
+            { activationState ? <div className="start-button" onClick={toggleStartPause}> &#8634;</div> : <div className="start-button" onClick={toggleStartPause}>&#9658;</div> }  
           </div>
         </div>
       <div className="keyboard-container">

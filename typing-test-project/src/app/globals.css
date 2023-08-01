@@ -75,9 +75,12 @@ body {
   background-color: var(--secondary-color);
 }
 
-.active-word {
-  background-color: white;
-  width: 1rem;
+.activated {
+  color: white;
+}
+
+.incorrect {
+  color: red;
 }
 /* .row-1 */
 
