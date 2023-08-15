@@ -1,20 +1,18 @@
 import Image from 'next/image'
 'use client' 
-import { commonWordsString } from './input';
-
 // I don't understand use client but it needs to be here for things to work?
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { generate } from 'random-words';
 
 export default function Home() {
   const [pressedKey, setPressedKey] = useState('');
   const [activationState, setActivationState] = useState(false)
   const [input, setInput] = useState("")
-  const [data, setData] = useState(commonWordsString)
-  // console.log(data)
-  // function parseData(event: any) {  
-    
-  // }
+  const [words, setWords] = useState<string[]>([]);
+  const [regen, setRegen] = useState(false)
+
+  console.log(words)
 
   // Function to handle key press event
   function handleKeyPress(event: any) {
@@ -24,15 +22,27 @@ export default function Home() {
 
   function toggleStartPause(event: any) {
     setActivationState(!activationState)
+    setRegen(!regen)
   }
 
   function handleChange(event: any) {
     setInput(event.target.value)
   }
 
-  async function getData(dataPath: string) {
-    
-  }
+
+  
+  useEffect(() => {
+    function generateWords() {
+      let generatedWords = generate(10)
+      console.log(generatedWords)
+      setWords(generatedWords)
+    }
+    generateWords()
+  }, [regen])
+
+
+
+
 
   // Add event listener to the document when the component mounts
   useEffect(() => {
@@ -77,7 +87,10 @@ export default function Home() {
 
           <div className="row row-1">
             
-           <span className='activated'>a</span><span className="incorrect">n</span> ow why be began how much give run end as book two as book two three
+           <span className='activated'>a</span><span className="incorrect">n</span> 
+           {words.map((word, index) => (
+              <div key={index}>{word}&nbsp;</div>
+            ))}
           </div>
           <div className="row row-2">
             <div className="timer">1:00</div>
@@ -130,3 +143,4 @@ export default function Home() {
     </main>
   )
 }
+
