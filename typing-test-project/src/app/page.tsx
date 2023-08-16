@@ -12,15 +12,13 @@ export default function Home() {
   const [words, setWords] = useState<string[]>([]);
   const [regen, setRegen] = useState(0)
   const [wordsIndex, setWordsIndex] = useState(0)
+  const [savedWord, setSavedWord] = useState("")
   console.log(words)
   console.log("Words index: " + wordsIndex)
   console.log("Words.length: " + words.length)
+  console.log("Current input text: " + input)
   // Function to handle key press event
-
-
-
-
-
+  console.log("Saved word: " + savedWord)
 
   function toggleStartPause(event: any) {
     setActivationState(!activationState)
@@ -31,8 +29,6 @@ export default function Home() {
     setInput(event.target.value)
   }
 
-
-  
   useEffect(() => {
     function generateWords() {
       let generatedWords = generate(9)
@@ -46,7 +42,6 @@ export default function Home() {
         generatedWords.push(generate(1)[0])
       }
       setWords(generatedWords)
-
     }
     generateWords()
   }, [regen])
@@ -63,7 +58,12 @@ export default function Home() {
           setWordsIndex((wordsIndex) => (wordsIndex + 1))
   
         }
+        var saved = input
+        setSavedWord(saved)
+        setSavedWord(saved.trim())
+        setInput(" ")
       }
+      
       setPressedKey(event.key);
     }
 
@@ -73,7 +73,7 @@ export default function Home() {
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, [wordsIndex]);
+  }, [wordsIndex, regen, input]);
 
   return (
     <main className='body'>
@@ -109,9 +109,9 @@ export default function Home() {
           <div className="row row-1">
             
            {/* <span className='activated'>a</span><span className="incorrect">n</span>  */}
-           {words.map((word, index) => (
-              <div key={index}>{word}&nbsp;</div>
-            ))}
+           {words.map((word, index) => (word == savedWord ? (<span key={index} className="correct">{word}&nbsp;</span>)
+              : (<span key={index} className={wordsIndex == index ? "active" : "inactive"}>{word}&nbsp;</span>
+            )))}
           </div>
           <div className="row row-2">
             <div className="timer">1:00</div>
@@ -119,6 +119,7 @@ export default function Home() {
                    id="message"
                    name="message"
                    onChange={handleChange}
+                   value = {input}
             />
             { activationState ? <div className="start-button" onClick={toggleStartPause}> &#8634;</div> : <div className="start-button" onClick={toggleStartPause}>&#9658;</div> }  
           </div>

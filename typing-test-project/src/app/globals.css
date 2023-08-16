@@ -75,8 +75,16 @@ body {
   background-color: var(--secondary-color);
 }
 
-.activated {
+.active {
   color: white;
+}
+
+.inactive {
+  color: var(--text-color)
+}
+
+.correct {
+  color: rgb(0, 255, 0);
 }
 
 .incorrect {
