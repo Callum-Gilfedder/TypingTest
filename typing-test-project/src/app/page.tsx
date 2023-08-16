@@ -46,6 +46,20 @@ export default function Home() {
     generateWords()
   }, [regen])
 
+  function getWordColor(word, index, savedWord, wordsIndex) {
+    if (index != wordsIndex) {
+      if (savedWord != word && index == wordsIndex - 1) {
+        return "incorrect"
+      } else {
+        if (savedWord == word && index == wordsIndex - 1 ) {
+          return "correct"
+        }
+      }
+    } else {
+      return "active"
+    }
+  }
+
 
   // Add event listener to the document when the component mounts
   useEffect(() => {
@@ -109,9 +123,8 @@ export default function Home() {
           <div className="row row-1">
             
            {/* <span className='activated'>a</span><span className="incorrect">n</span>  */}
-           {words.map((word, index) => (word == savedWord ? (<span key={index} className="correct">{word}&nbsp;</span>)
-              : (<span key={index} className={wordsIndex == index ? "active" : "inactive"}>{word}&nbsp;</span>
-            )))}
+           {words.map((word, index) => <span key={index} className={getWordColor(word, index, savedWord, wordsIndex)}>{word}&nbsp;</span>
+            )}
           </div>
           <div className="row row-2">
             <div className="timer">1:00</div>
