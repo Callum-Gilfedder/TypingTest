@@ -14,6 +14,9 @@ export default function Home() {
   const [regen, setRegen] = useState(0)
   const [wordsIndex, setWordsIndex] = useState(0)
   const [savedWord, setSavedWord] = useState("")
+  const [incorrectCount, setIncorrectCount] = useState(0)
+  const [correctCount, setCorrectCount] = useState(0) 
+
   console.log(words)
   console.log("Words index: " + wordsIndex)
   console.log("Words.length: " + words.length)
@@ -51,12 +54,16 @@ export default function Home() {
     generateWords()
   }, [regen])
 
+
   function getWordColor(word, index, savedWord, wordsIndex) {
     if (index != wordsIndex) {
-      if (savedWord != word && index == wordsIndex - 1) {
+      if (savedWord != word && index == wordsIndex - 1) { 
+        // setIncorrectCount(prevCount => prevCount + 1);
         return "incorrect"
       } else {
         if (savedWord == word && index == wordsIndex - 1 ) {
+          // setCorrectCount(prevCount => prevCount + 1);
+
           return "correct"
         }
       }
@@ -75,8 +82,6 @@ export default function Home() {
           setRegen(regen => regen + 1)
         } else { 
           setWordsIndex((wordsIndex) => (wordsIndex + 1))
-          
-  
         }
         var saved = input
         setSavedWord(saved)
@@ -134,7 +139,7 @@ export default function Home() {
             )}
           </div>
           <div className="row row-2">
-            <Timer activationState={activationState}/>
+            <Timer activationState={activationState} correctCount={correctCount} incorrectCount={incorrectCount}/>
             <input type="text" 
                    id="message"
                    name="message"
@@ -185,4 +190,3 @@ export default function Home() {
     </main>
   )
 }
-

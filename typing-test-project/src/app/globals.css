@@ -11,6 +11,9 @@
   --large-font: 2.0vw;
   --text-color: rgba(219, 216, 227, 0.541);
   --key-text-color: rgba(219, 216, 227, 0.541);
+  --correct-color: green;
+  --incorrect-color: red;
+  --active-color: white;
 }
 
 
@@ -76,20 +79,50 @@ body {
 }
 
 .active {
-  color: white;
+  color: var(--active-color)
 }
+
 
 .inactive {
   color: var(--text-color)
 }
 
 .correct {
-  color: rgb(0, 255, 0);
+  animation: correct-animation 3s;
+}
+
+@keyframes correct-animation {
+  0% {
+
+    color: var(--key-text-color);
+  }
+  10% {
+    color: var(--correct-color)
+
+  }
+  100% {
+    color: var(--key-text-color);
+  }
+
 }
 
 .incorrect {
-  color: red;
+  animation: incorrect-animation 3s;
 }
+
+@keyframes incorrect-animation {
+  0% {
+
+    color: var(--key-text-color);
+  }
+  10% {
+    color: var(--incorrect-color);
+  }
+  100% {
+    color: var(--key-text-color);
+  }
+}
+
 /* .row-1 */
 
 .row-2 {
