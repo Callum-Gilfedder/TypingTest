@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { generate } from 'random-words';
+import Timer from './timer';
 
 export default function Home() {
   const [pressedKey, setPressedKey] = useState('');
@@ -22,7 +23,10 @@ export default function Home() {
 
   function toggleStartPause(event: any) {
     setActivationState(!activationState)
-    // setRegen(!regen)
+  }
+
+  function triggerStart(event: any) {
+    setActivationState(true)
   }
 
   function handleChange(event: any) {
@@ -38,6 +42,7 @@ export default function Home() {
       if (length < 65) {
         generatedWords.push(generate(2)[0])
         generatedWords.push(generate(2)[1])
+        generateWords() 
       } else if (length > 65 && length < 71) {
         generatedWords.push(generate(1)[0])
       }
@@ -70,12 +75,14 @@ export default function Home() {
           setRegen(regen => regen + 1)
         } else { 
           setWordsIndex((wordsIndex) => (wordsIndex + 1))
+          
   
         }
         var saved = input
         setSavedWord(saved)
         setSavedWord(saved.trim())
         setInput(" ")
+        triggerStart(event)
       }
       
       setPressedKey(event.key);
@@ -127,7 +134,7 @@ export default function Home() {
             )}
           </div>
           <div className="row row-2">
-            <div className="timer">1:00</div>
+            <Timer activationState={activationState}/>
             <input type="text" 
                    id="message"
                    name="message"
