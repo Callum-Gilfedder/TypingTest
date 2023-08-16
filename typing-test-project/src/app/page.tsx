@@ -10,19 +10,21 @@ export default function Home() {
   const [activationState, setActivationState] = useState(false)
   const [input, setInput] = useState("")
   const [words, setWords] = useState<string[]>([]);
-  const [regen, setRegen] = useState(false)
-
+  const [regen, setRegen] = useState(0)
+  const [wordsIndex, setWordsIndex] = useState(0)
   console.log(words)
-
+  console.log("Words index: " + wordsIndex)
+  console.log("Words.length: " + words.length)
   // Function to handle key press event
-  function handleKeyPress(event: any) {
-    setPressedKey(event.key);
-    console.log(event.key)
-  }
+
+
+
+
+
 
   function toggleStartPause(event: any) {
     setActivationState(!activationState)
-    setRegen(!regen)
+    // setRegen(!regen)
   }
 
   function handleChange(event: any) {
@@ -33,26 +35,45 @@ export default function Home() {
   
   useEffect(() => {
     function generateWords() {
-      let generatedWords = generate(10)
+      let generatedWords = generate(9)
       console.log(generatedWords)
+      var x = (generatedWords.join(" "))
+      var length = x.length
+      if (length < 65) {
+        generatedWords.push(generate(2)[0])
+        generatedWords.push(generate(2)[1])
+      } else if (length > 65 && length < 71) {
+        generatedWords.push(generate(1)[0])
+      }
       setWords(generatedWords)
+
     }
     generateWords()
   }, [regen])
 
 
-
-
-
   // Add event listener to the document when the component mounts
   useEffect(() => {
+    function handleKeyPress(event: any) {
+      if (event.key == " ") {
+        if (wordsIndex + 1 >= words.length) {
+          setWordsIndex((wordsIndex) => 0)
+          setRegen(regen => regen + 1)
+        } else { 
+          setWordsIndex((wordsIndex) => (wordsIndex + 1))
+  
+        }
+      }
+      setPressedKey(event.key);
+    }
+
     document.addEventListener('keydown', handleKeyPress);
 
     // Clean up the event listener when the component unmounts
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, []);
+  }, [wordsIndex]);
 
   return (
     <main className='body'>
@@ -87,7 +108,7 @@ export default function Home() {
 
           <div className="row row-1">
             
-           <span className='activated'>a</span><span className="incorrect">n</span> 
+           {/* <span className='activated'>a</span><span className="incorrect">n</span>  */}
            {words.map((word, index) => (
               <div key={index}>{word}&nbsp;</div>
             ))}
