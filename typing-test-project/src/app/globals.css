@@ -8,7 +8,7 @@
   --secondary-color: rgb(56, 51, 68);
   --activation-color: rgba(255, 255, 255, 0.452);
   --border-color: rgb(53, 47, 68);
-  --large-font: 2.5rem;
+  --large-font: 2.0vw;
   --text-color: rgba(219, 216, 227, 0.541);
   --key-text-color: rgba(219, 216, 227, 0.541);
 }
@@ -26,7 +26,7 @@ body {
 .keyboard-container {
   width: var(--keyboard-width);
   height: var(--keyboard-height);
-  margin-top: 0.5vh;
+  margin-top: 8vh;
   margin-left: 30.8vw;  
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -75,8 +75,16 @@ body {
   background-color: var(--secondary-color);
 }
 
-.activated {
+.active {
   color: white;
+}
+
+.inactive {
+  color: var(--text-color)
+}
+
+.correct {
+  color: rgb(0, 255, 0);
 }
 
 .incorrect {
@@ -120,7 +128,7 @@ body {
   justify-content: center;
   text-align: center;
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
+  font-size: var(--large-font);
 
 }
 

@@ -1,48 +1,100 @@
 import Image from 'next/image'
 'use client' 
-import { commonWordsString } from './input';
-
 // I don't understand use client but it needs to be here for things to work?
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { generate } from 'random-words';
+import Timer from './timer';
 
 export default function Home() {
   const [pressedKey, setPressedKey] = useState('');
   const [activationState, setActivationState] = useState(false)
   const [input, setInput] = useState("")
-  const [data, setData] = useState(commonWordsString)
-  // console.log(data)
-  // function parseData(event: any) {  
-    
-  // }
-
+  const [words, setWords] = useState<string[]>([]);
+  const [regen, setRegen] = useState(0)
+  const [wordsIndex, setWordsIndex] = useState(0)
+  const [savedWord, setSavedWord] = useState("")
+  console.log(words)
+  console.log("Words index: " + wordsIndex)
+  console.log("Words.length: " + words.length)
+  console.log("Current input text: " + input)
   // Function to handle key press event
-  function handleKeyPress(event: any) {
-    setPressedKey(event.key);
-    console.log(event.key)
-  }
+  console.log("Saved word: " + savedWord)
 
   function toggleStartPause(event: any) {
     setActivationState(!activationState)
+  }
+
+  function triggerStart(event: any) {
+    setActivationState(true)
   }
 
   function handleChange(event: any) {
     setInput(event.target.value)
   }
 
-  async function getData(dataPath: string) {
-    
+  useEffect(() => {
+    function generateWords() {
+      let generatedWords = generate(9)
+      console.log(generatedWords)
+      var x = (generatedWords.join(" "))
+      var length = x.length
+      if (length < 65) {
+        generatedWords.push(generate(2)[0])
+        generatedWords.push(generate(2)[1])
+        generateWords() 
+      } else if (length > 65 && length < 71) {
+        generatedWords.push(generate(1)[0])
+      }
+      setWords(generatedWords)
+    }
+    generateWords()
+  }, [regen])
+
+  function getWordColor(word, index, savedWord, wordsIndex) {
+    if (index != wordsIndex) {
+      if (savedWord != word && index == wordsIndex - 1) {
+        return "incorrect"
+      } else {
+        if (savedWord == word && index == wordsIndex - 1 ) {
+          return "correct"
+        }
+      }
+    } else {
+      return "active"
+    }
   }
+
 
   // Add event listener to the document when the component mounts
   useEffect(() => {
+    function handleKeyPress(event: any) {
+      if (event.key == " ") {
+        if (wordsIndex + 1 >= words.length) {
+          setWordsIndex((wordsIndex) => 0)
+          setRegen(regen => regen + 1)
+        } else { 
+          setWordsIndex((wordsIndex) => (wordsIndex + 1))
+          
+  
+        }
+        var saved = input
+        setSavedWord(saved)
+        setSavedWord(saved.trim())
+        setInput(" ")
+        triggerStart(event)
+      }
+      
+      setPressedKey(event.key);
+    }
+
     document.addEventListener('keydown', handleKeyPress);
 
     // Clean up the event listener when the component unmounts
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, []);
+  }, [wordsIndex, regen, input]);
 
   return (
     <main className='body'>
@@ -77,14 +129,17 @@ export default function Home() {
 
           <div className="row row-1">
             
-           <span className='activated'>a</span><span className="incorrect">n</span> ow why be began how much give run end as book two as book two three
+           {/* <span className='activated'>a</span><span className="incorrect">n</span>  */}
+           {words.map((word, index) => <span key={index} className={getWordColor(word, index, savedWord, wordsIndex)}>{word}&nbsp;</span>
+            )}
           </div>
           <div className="row row-2">
-            <div className="timer">1:00</div>
+            <Timer activationState={activationState}/>
             <input type="text" 
                    id="message"
                    name="message"
                    onChange={handleChange}
+                   value = {input}
             />
             { activationState ? <div className="start-button" onClick={toggleStartPause}> &#8634;</div> : <div className="start-button" onClick={toggleStartPause}>&#9658;</div> }  
           </div>
@@ -130,3 +185,4 @@ export default function Home() {
     </main>
   )
 }
+
